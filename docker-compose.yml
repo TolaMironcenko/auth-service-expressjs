@@ -1,0 +1,7 @@
+version: "3.11"
+
+services:
+  auth_service:
+    build: ./auth_service/
+    command: npm start
+    restart: always
