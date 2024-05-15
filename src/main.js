@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import {auth, verify_auth} from './auth.js'
+import {auth} from './auth.js'
 import {
     get_all_users, 
     get_user, 
@@ -16,7 +16,7 @@ const app = express()
 dotenv.config()
 const port = process.env.PORT || 5000
 
-app.use(bodyParser())
+app.use(bodyParser.json())
 
 // ------------ authorization -------------
 app.get('/api/allusers', get_all_users)

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const get_all_users = (request, response) => {
 	const token = request.body.token
-	if (!token) response.json({"status":"403"})
+	if (!token) {response.json({"status":"403"});return}
 	if (verify_auth(token)) {
 		const all_users = JSON.parse(fs.readFileSync(process.env.USERS_FILE, 'utf-8'))
 		const user = all_users.find(usr => {
@@ -22,7 +22,7 @@ const get_all_users = (request, response) => {
 
 const get_user = (request, response) => {
 	const token = request.body.token
-	if (!token) response.json({"status":"403"})
+	if (!token) {response.json({"status":"403"});return}
 	if (!verify_auth(token)) response.json({"status":"403"})
 	const all_users = JSON.parse(fs.readFileSync(process.env.USERS_FILE, 'utf-8'))
 	const user = all_users.find(usr => {
@@ -32,12 +32,11 @@ const get_user = (request, response) => {
 		return false
 	})
 	if (!user) {response.json({"status": "403"})} else response.json(user)
-
 }
 
 const add_user = (request, response) => {
 	const token = request.body.token
-	if (!token) response.json({"status":"403"})
+	if (!token) {response.json({"status":"403"});return}
 	if (!verify_auth(token)) response.json({"status":"403"})
 	const all_users = JSON.parse(fs.readFileSync(process.env.USERS_FILE, 'utf-8'))
 
