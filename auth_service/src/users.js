@@ -31,7 +31,7 @@ const get_user = (request, response) => {
 		}
 		return false
 	})
-	if (!user) {response.json({"status": "403"})} else response.json(user)
+	if (!user) {response.json({"status": "403"})} else {delete user["password"];response.json(user)}
 }
 
 const add_user = (request, response) => {

@@ -5,3 +5,5 @@ services:
     build: ./auth_service/
     command: npm start
     restart: always
+    ports:
+      - "8000:5000"
