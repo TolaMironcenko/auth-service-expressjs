@@ -1,1 +1,1 @@
-[{"id":0,"username":"tola","password":"$2y$10$fX6mENugy4yPfymhlg6Q.eOUbQZ7bbsRomaTtIwTkb3gWL.8pFAG6","group":"root","is_superuser":1}]
+[{"id":0,"username":"tola","password":"2808","group":"root","is_superuser":1},{"id":"7cda0bf9-85b1-4882-9626-715be0f1f420","username":"lisa","password":"lisa","group":"users","is_superuser":0}]

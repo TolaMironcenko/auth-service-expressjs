@@ -53,6 +53,13 @@ const add_user = (request, response) => {
 		if (!request.body.username) {response.json({"required": "[username, password, group, is_superuser]"});return}
 		if (!request.body.password) {response.json({"required": "[username, password, group, is_superuser]"});return}
 		if (!request.body.group) {response.json({"required": "[username, password, group, is_superuser]"});return}
+		const all_users = JSON.parse(fs.readFileSync(process.env.USERS_FILE, 'utf-8'))
+		const have_user = all_users.find(usr => {
+			if (usr.username === request.body.username) {
+				return usr
+			}
+		})
+		if (have_user) {response.json({"status": "err", "info": "user already exists"});return}
 		const username = request.body.username
 		const password = request.body.password
 		const group = request.body.group
@@ -67,6 +74,7 @@ const add_user = (request, response) => {
 		console.log(uuidv4())
 		all_users.push(new_user)
 		fs.writeFileSync(process.env.USERS_FILE, JSON.stringify(all_users))
+		delete new_user["password"]
 		response.json({"status": "ok", "new_user": new_user})
 	} else response.json({"status": "403"})
 }

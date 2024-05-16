@@ -25,7 +25,7 @@ app.post('/api/adduser', add_user)
 app.post('/api/changepassword', change_password)
 app.post('/api/deluser', del_user)
 app.post('/api/deluserassupeuser', del_user_as_superuser)
-app.post('/api/access', user_access)
+app.get('/api/access', user_access)
 // ----------------------------------------
 
 app.listen(port, () => {
