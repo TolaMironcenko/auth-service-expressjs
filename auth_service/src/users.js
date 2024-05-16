@@ -15,6 +15,9 @@ const get_all_users = (request, response) => {
 			return false
 		})
 		if (user && user.is_superuser) {
+			all_users.map(user => {
+				delete user["password"]
+			})
 			response.json(all_users)
 		} else response.json({"status":"403"})
 	} else response.json({"status":"403"})
