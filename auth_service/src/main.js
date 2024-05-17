@@ -18,14 +18,14 @@ const port = process.env.PORT || 5000
 app.use(express.json())
 
 // ------------ authorization -------------
-app.get('/api/allusers', get_all_users)
-app.get('/api/user', get_user)
+app.post('/api/allusers', get_all_users)
+app.post('/api/user', get_user)
 app.post('/api/token', auth)
 app.post('/api/adduser', add_user)
 app.post('/api/changepassword', change_password)
 app.post('/api/deluser', del_user)
 app.post('/api/deluserassupeuser', del_user_as_superuser)
-app.get('/api/access', user_access)
+app.post('/api/access', user_access)
 // ----------------------------------------
 
 app.listen(port, () => {

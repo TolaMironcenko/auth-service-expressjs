@@ -7,3 +7,10 @@ services:
     restart: always
     ports:
       - "8000:5000"
+
+  notes_service:
+    build: ./notes_service/
+    command: npm start
+    restart: always
+    ports:
+      - 8001:5000
